@@ -8,6 +8,7 @@ arch:
 description: Sharry pour Home Assistant sans dépendances à Mariadb
 codenotary: erdnaxela02@hotmail.fr
 init: false
+hassio_role: default
 image: ghcr.io/erdnaxela02/sharry-dependency-less/{arch}
 map:
   - share:rw

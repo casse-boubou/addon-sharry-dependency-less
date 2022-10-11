@@ -27,7 +27,7 @@ RUN set -eux; \
         netcat-openbsd=1.130-r3 \
         openjdk11-jre=11.0.16.1_p1-r0
 
-COPY --chmod=445 rootfs /
+COPY --chown=abc:abc rootfs /
 WORKDIR /opt
 
 # Build arguments
