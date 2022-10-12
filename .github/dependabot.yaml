@@ -9,3 +9,4 @@ updates:
     directory: "/sharry"
     schedule:
       interval: daily
+ 

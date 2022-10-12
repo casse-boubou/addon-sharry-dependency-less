@@ -152,3 +152,4 @@ if bashio::config.true 'copy_db'; then
         bashio::exit.nok
     fi
 fi
+ 

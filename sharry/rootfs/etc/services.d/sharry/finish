@@ -18,3 +18,4 @@ if [[ "$1" -ne 0 ]] && [[ "$1" -ne 256 ]]; then
 fi
 
 bashio::log.info "Service restart after closing"
+ 

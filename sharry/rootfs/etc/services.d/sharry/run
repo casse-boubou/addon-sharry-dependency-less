@@ -314,3 +314,4 @@ bashio::log.debug
 
 bashio::log.info "Handing over control to Sharry..."
 exec /opt/sharry/bin/sharry-restserver "${conf_props[@]}" -- /etc/sharry/sharry.conf
+ 

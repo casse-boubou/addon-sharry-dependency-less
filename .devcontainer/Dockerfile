@@ -32,3 +32,4 @@ RUN \
 
 # Generate a machine-id for this container
 RUN rm /etc/machine-id && dbus-uuidgen --ensure=/etc/machine-id
+ 
