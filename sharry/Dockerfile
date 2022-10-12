@@ -27,8 +27,18 @@ RUN set -eux; \
         netcat-openbsd=1.130-r3 \
         openjdk11-jre=11.0.16.1_p1-r0
 
-COPY --chown=abc:abc rootfs /
-WORKDIR /opt
+# Add Maria db
+RUN apk add --no-cache \
+        mariadb=10.6.9-r0 \
+        mariadb-server-utils=10.6.9-r0 \
+        pwgen=2.08-r1
+
+ENV \
+    LD_PRELOAD="/usr/local/lib/libjemalloc.so.2" \
+    S6_SERVICES_GRACETIME=18000
+    
+COPY rootfs /
+WORKDIR /
 
 # Build arguments
 ARG BUILD_ARCH

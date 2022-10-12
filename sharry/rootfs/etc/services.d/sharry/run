@@ -220,16 +220,16 @@ if bashio::config.exists 'DefaultStore'; then
     conf_props+=("-D${SHARRY}.backend.files.default-store=$(bashio::config 'DefaultStore')")
 fi
 # Maria_DB
-if bashio::config.true 'use_maria_db'; then
-    bashio::log.info "Configuring Maria db..."
-    conf_props+=("-D${SHARRY}.backend.files.stores.database.enabled=$(bashio::config 'use_maria_db')")
+if bashio::config.equals 'DefaultStore' 'database'; then
+    bashio::log.info "Configuring Maria db storage..."
+    conf_props+=("-D${SHARRY}.backend.files.stores.database.enabled=true")
 fi
 # Local_DB
-if bashio::config.true 'use_local_db'; then
-    bashio::log.info "Configuring Local db..."
-    conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.enabled=$(bashio::config 'use_local_db')")
+if bashio::config.equals 'DefaultStore' 'filesystem'; then
+    bashio::log.info "Configuring Local db storage..."
+    conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.enabled=true")
     conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.directory=/share/$(bashio::config 'local_db')")
-    bashio::log.info "Local db locate at /share/$(bashio::config 'local_db')"
+    bashio::log.info "Local db storage locate at /share/$(bashio::config 'local_db')"
 fi
 
 
@@ -238,6 +238,14 @@ fi
 # --- SET UP COPY-FILE ---
 if bashio::config.true 'copy_db'; then
     bashio::log.info "Activate copy-file..."
+    if bashio::config.equals 'DefaultStore' 'database'; then
+        bashio::log.info "Configuring Local db storage..."
+        conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.enabled=true")
+        conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.directory=/share/$(bashio::config 'local_db')")
+    elif bashio::config.equals 'DefaultStore' 'filesystem'; then
+        bashio::log.info "Configuring Maria db storage..."
+        conf_props+=("-D${SHARRY}.backend.files.stores.database.enabled=true")
+    fi
     conf_props+=("-D${SHARRY}.backend.files.copy-files.enable=$(bashio::config 'copy_db')")
     conf_props+=("-D${SHARRY}.backend.files.copy-files.source=$(bashio::config 'copy_db_source')")
     conf_props+=("-D${SHARRY}.backend.files.copy-files.target=$(bashio::config 'copy_db_target')")

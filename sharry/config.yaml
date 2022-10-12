@@ -8,7 +8,6 @@ arch:
 description: Sharry pour Home Assistant sans dépendances à Mariadb
 codenotary: erdnaxela02@hotmail.fr
 init: false
-image: ghcr.io/erdnaxela02/sharry-dependency-less/{arch}
 map:
   - share:rw
 services:
@@ -33,8 +32,6 @@ options:
   theme: light
   log_level: info
   conf_overrides: []
-  use_maria_db: false
-  use_local_db: false
   databases:
     - sharry
   logins:
@@ -47,14 +44,12 @@ schema:
   conf_overrides:
     - property: match(^sharry[.]restserver[.][-.a-z0-9]+)
       value: str
-  use_maria_db: bool
   remote_db_type: list(mariadb|postgres)?
   remote_db_host: str?
   remote_db_port: port?
   remote_db_username: str?
   remote_db_password: password?
   remote_db_database: str?
-  use_local_db: bool
   local_db: str?
   DefaultStore: list(database|filesystem)
   copy_db: bool?
