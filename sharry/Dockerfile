@@ -37,7 +37,7 @@ ENV \
     LD_PRELOAD="/usr/local/lib/libjemalloc.so.2" \
     S6_SERVICES_GRACETIME=18000
     
-COPY rootfs /
+COPY --chmod=445 rootfs /
 WORKDIR /
 
 # Build arguments
