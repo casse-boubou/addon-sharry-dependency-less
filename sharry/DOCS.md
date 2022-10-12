@@ -55,16 +55,25 @@ sauvegarder le dossier local
 Example add-on configuration:
 
 ```yaml
+DefaultStore: database
 domain: homeassistant.local
 use_ssl: false
 default_language: us
 share_max_size_gb: 1.5
 share_max_valid_days: 365
-server_secret: changeme
+server_secret: CHANGE_ME
 log_level: info
 conf_overrides:
   - property: sharry.restserver.webapp.welcome-message
     value: Happy sharing!
+databases:
+  - sharry
+logins:
+  - password: CHANGE_ME
+    username: homeassistant
+rights:
+  - database: sharry
+    username: homeassistant
 ```
 
 **Note**: _Ceci n'est qu'un exemple, ne le copier-coller pas ! Crée le votre!_
