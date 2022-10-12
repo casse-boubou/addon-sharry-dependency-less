@@ -12,4 +12,3 @@
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/addons,type=bind,consistency=delegated",
   "workspaceFolder": "/workspaces/addons"
 }
- 

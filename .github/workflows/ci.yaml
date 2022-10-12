@@ -18,4 +18,3 @@ on:
 jobs:
   workflows:
     uses: erdnaxela02/ha-addon-workflows/.github/workflows/addon-ci.yaml@main
- 

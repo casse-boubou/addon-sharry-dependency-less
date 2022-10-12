@@ -4,4 +4,3 @@ build_from:
 codenotary:
   base_image: codenotary@frenck.dev
   signer: erdnaxela02@hotmail.fr
- 

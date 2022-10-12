@@ -139,4 +139,3 @@ init_dbus
 init_udev
 run_supervisor
 stop_docker
- 
