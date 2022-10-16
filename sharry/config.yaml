@@ -24,14 +24,15 @@ ports_description:
 backup_post: s6-svc -wd -d /run/s6/legacy-services/mariadb-lock/
 backup_pre: s6-svc -wU -u /run/s6/legacy-services/mariadb-lock/
 options:
+  conf_overrides: []
   domain: homeassistant.local
   use_ssl: false
   default_language: us
   share_max_size_gb: 1.5
   share_max_valid_days: 365
+  server_secret: null
   theme: light
   log_level: info
-  conf_overrides: []
   databases:
     - sharry
   logins:
@@ -44,14 +45,14 @@ schema:
   conf_overrides:
     - property: match(^sharry[.]restserver[.][-.a-z0-9]+)
       value: str
+  DefaultStore: list(database|filesystem)
+  local_db: str?
   remote_db_type: list(mariadb|postgres)?
   remote_db_host: str?
   remote_db_port: port?
   remote_db_username: str?
   remote_db_password: password?
   remote_db_database: str?
-  local_db: str?
-  DefaultStore: list(database|filesystem)
   copy_db: bool?
   copy_db_source: list(database|filesystem)?
   copy_db_target: list(database|filesystem)?
