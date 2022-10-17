@@ -1,66 +1,66 @@
 ---
 configuration:
-  conf_overrides:
+  1_conf_overrides:
     name: Conf_overrides
     description: Sharry's configuration is specified in HOCON.
-  DefaultStore:
+  2_defaultStore:
     name: DefaultStore
     description: Default database.
-  local_db:
+  3_local_db:
     name: Local_db
     description: Local data directory name if filesystem.
-  remote_db_type:
+  4_remote_db_type:
     name: Remote_db_type
     description: The type of database if remote database.
-  remote_db_host:
+  5_remote_db_host:
     name: Remote_db_host
     description: The hostname/address for the MariaDB/Postgres database if remote database.
-  remote_db_port:
+  6_remote_db_port:
     name: Remote_db_port
     description: The port that the database server is listening on if remote database.
-  remote_db_username:
+  7_remote_db_username:
     name: Remote_db_username
     description: The username with permissions on that database if remote database.
-  remote_db_password:
+  8_remote_db_password:
     name: Remote_db_password
     description: The password of the above user if remote database.
-  remote_db_database:
+  9_remote_db_database:
     name: Remote_db_database
     description: The name of the database if remote database.
-  copy_db:
+  10_copy_db:
     name: Copy_db
     description: If the user wants to copy the database.
-  copy_db_source:
+  11_copy_db_source:
     name: Copy_db_source
     description: Copied database source.
-  copy_db_target:
+  12_copy_db_target:
     name: Copy_db_target
     description: Copied database target.
-  domain:
+  13_domain:
     name: Domain
     description: The domain users will access Sharry at.
-  use_ssl:
+  14_use_ssl:
     name: Use_ssl
     description: If users will use SSL to access Sharry.
-  default_language:
+  15_default_language:
     name: Default_language
     description: An ISO 3166-1 country code.
-  share_max_size_gb:
+  16_share_max_size_gb:
     name: Share_max_size_gb
     description: Max size a share can be in GB.
-  share_max_valid_days:
+  17_share_max_valid_days:
     name: Share_max_valid_days
     description: Max number of days a share can be valid for.
-  server_secret:
+  18_server_secret:
     name: Server_secret
     description: Secret used to sign authenticator tokens generated for clients.
-  log_level:
+  19_log_level:
     name: Log_level
     description:
-  theme:
+  20_theme:
     name: Theme
     description: Default theme on Sharry.
-  reset_database:
+  21_reset_database:
     name: Reset_database
     description: To delete and recreate the database on startup.
   databases:

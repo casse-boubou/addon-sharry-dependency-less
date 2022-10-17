@@ -24,15 +24,15 @@ ports_description:
 backup_post: s6-svc -wd -d /run/s6/legacy-services/mariadb-lock/
 backup_pre: s6-svc -wU -u /run/s6/legacy-services/mariadb-lock/
 options:
-  conf_overrides: []
-  domain: homeassistant.local
-  use_ssl: false
-  default_language: us
-  share_max_size_gb: 1.5
-  share_max_valid_days: 365
-  server_secret: null
-  theme: light
-  log_level: info
+  1_conf_overrides: []
+  13_domain: homeassistant.local
+  14_use_ssl: false
+  15_default_language: us
+  16_share_max_size_gb: 1.5
+  17_share_max_valid_days: 365
+  18_server_secret: null
+  20_theme: light
+  19_log_level: info
   databases:
     - sharry
   logins:
@@ -42,29 +42,29 @@ options:
     - database: sharry
       username: homeassistant
 schema:
-  conf_overrides:
+  1_conf_overrides:
     - property: match(^sharry[.]restserver[.][-.a-z0-9]+)
       value: str
-  DefaultStore: list(database|filesystem)
-  local_db: str?
-  remote_db_type: list(mariadb|postgres)?
-  remote_db_host: str?
-  remote_db_port: port?
-  remote_db_username: str?
-  remote_db_password: password?
-  remote_db_database: str?
-  copy_db: bool?
-  copy_db_source: list(database|filesystem)?
-  copy_db_target: list(database|filesystem)?
-  domain: match([^\/:]+)
-  use_ssl: bool?
-  default_language: match([A-Za-z]{2})?
-  share_max_size_gb: float(0.01,)?
-  share_max_valid_days: int(1,)?
-  server_secret: password
-  log_level: list(trace|debug|info|notice|warning|error|fatal)?
-  theme: list(light|dark)?
-  reset_database: bool?
+  2_defaultStore: list(database|filesystem)
+  3_local_db: str?
+  4_remote_db_type: list(mariadb|postgres)?
+  5_remote_db_host: str?
+  6_remote_db_port: port?
+  7_remote_db_username: str?
+  8_remote_db_password: password?
+  9_remote_db_database: str?
+  10_copy_db: bool?
+  11_copy_db_source: list(database|filesystem)?
+  12_copy_db_target: list(database|filesystem)?
+  13_domain: match([^\/:]+)
+  14_use_ssl: bool?
+  15_default_language: match([A-Za-z]{2})?
+  16_share_max_size_gb: float(0.01,)?
+  17_share_max_valid_days: int(1,)?
+  18_server_secret: password
+  19_log_level: list(trace|debug|info|notice|warning|error|fatal)?
+  20_theme: list(light|dark)?
+  21_reset_database: bool?
   databases:
     - str
   logins:

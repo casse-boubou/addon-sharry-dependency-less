@@ -50,9 +50,9 @@ bashio::log.debug "API Response: ${response}"
 
 # --- Load USER'S CUSTOM configuration overrides ---
 bashio::log.debug "Loading 'conf_overrides'..."
-for var in $(bashio::config 'conf_overrides|keys'); do
-    property=$(bashio::config "conf_overrides[${var}].property")
-    value=$(bashio::config "conf_overrides[${var}].value")
+for var in $(bashio::config '1_conf_overrides|keys'); do
+    property=$(bashio::config "1_conf_overrides[${var}].property")
+    value=$(bashio::config "1_conf_overrides[${var}].value")
     if [[ ${property} =~ secret|password ]]; then
         bashio::log.info "Setting ${property} to ******"
     else
@@ -66,13 +66,13 @@ done
 
 # --- SET MARIA DB URL ---
 bashio::log.debug "Setting DB URL..."
-if ! bashio::config.is_empty 'remote_db_host'; then
-    db_type=$(bashio::config 'remote_db_type')
-    host=$(bashio::config 'remote_db_host')
-    port=$(bashio::config 'remote_db_port')
-    username=$(bashio::config 'remote_db_username')
-    password=$(bashio::config 'remote_db_password')
-    database=$(bashio::config 'remote_db_database')
+if ! bashio::config.is_empty '5_remote_db_host'; then
+    db_type=$(bashio::config '4_remote_db_type')
+    host=$(bashio::config '5_remote_db_host')
+    port=$(bashio::config '6_remote_db_port')
+    username=$(bashio::config '7_remote_db_username')
+    password=$(bashio::config '8_remote_db_password')
+    database=$(bashio::config '9_remote_db_database')
 else
     if ! bashio::services.available 'mysql'; then
         bashio::log.fatal
@@ -87,12 +87,12 @@ else
     username=$(bashio::services 'mysql' 'username')
     password=$(bashio::services 'mysql' 'password')
 
-    if bashio::config.true 'reset_database'; then
+    if bashio::config.true '21_reset_database'; then
         bashio::log.warning 'Resetting database...'
         echo "DROP DATABASE IF EXISTS \`${DATABASE}\`;" \
             | mysql -h "${host}" -P "${port}" -u "${username}" -p"${password}"
         # Remove `reset_database` option
-        bashio::addon.option 'reset_database'
+        bashio::addon.option '21_reset_database'
     fi
 fi
 conf_props+=( \
@@ -106,40 +106,40 @@ conf_props+=( \
 
 # --- SET UP DATABASE ---
 # Default database
-if bashio::config.exists 'DefaultStore'; then
-    conf_props+=("-D${SHARRY}.backend.files.default-store=$(bashio::config 'DefaultStore')")
+if bashio::config.exists '2_defaultStore'; then
+    conf_props+=("-D${SHARRY}.backend.files.default-store=$(bashio::config '2_defaultStore')")
 fi
 # Maria_DB
-if bashio::config.equals 'DefaultStore' 'database'; then
+if bashio::config.equals '2_defaultStore' 'database'; then
     bashio::log.info "Configuring Maria db storage..."
     conf_props+=("-D${SHARRY}.backend.files.stores.database.enabled=true")
 fi
 # Local_DB
-if bashio::config.equals 'DefaultStore' 'filesystem'; then
+if bashio::config.equals '2_defaultStore' 'filesystem'; then
     bashio::log.info "Configuring Local db storage..."
     conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.enabled=true")
-    conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.directory=/share/$(bashio::config 'local_db')")
-    bashio::log.info "Local db storage locate at /share/$(bashio::config 'local_db')"
+    conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.directory=/share/$(bashio::config '3_local_db')")
+    bashio::log.info "Local db storage locate at /share/$(bashio::config '3_local_db')"
 fi
 
 
 
 
 # --- SET UP COPY-FILE ---
-if bashio::config.true 'copy_db'; then
+if bashio::config.true '10_copy_db'; then
     bashio::log.info "Activate copy-file..."
-    if bashio::config.equals 'DefaultStore' 'database'; then
+    if bashio::config.equals '2_defaultStore' 'database'; then
         bashio::log.info "Configuring Local db storage..."
         conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.enabled=true")
-        conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.directory=/share/$(bashio::config 'local_db')")
-    elif bashio::config.equals 'DefaultStore' 'filesystem'; then
+        conf_props+=("-D${SHARRY}.backend.files.stores.filesystem.directory=/share/$(bashio::config '3_local_db')")
+    elif bashio::config.equals '2_defaultStore' 'filesystem'; then
         bashio::log.info "Configuring Maria db storage..."
         conf_props+=("-D${SHARRY}.backend.files.stores.database.enabled=true")
     fi
-    conf_props+=("-D${SHARRY}.backend.files.copy-files.enable=$(bashio::config 'copy_db')")
-    conf_props+=("-D${SHARRY}.backend.files.copy-files.source=$(bashio::config 'copy_db_source')")
-    conf_props+=("-D${SHARRY}.backend.files.copy-files.target=$(bashio::config 'copy_db_target')")
-    bashio::log.info "Copy-file is activated FROM $(bashio::config 'copy_db_source') TO $(bashio::config 'copy_db_target')"
+    conf_props+=("-D${SHARRY}.backend.files.copy-files.enable=$(bashio::config '10_copy_db')")
+    conf_props+=("-D${SHARRY}.backend.files.copy-files.source=$(bashio::config '11_copy_db_source')")
+    conf_props+=("-D${SHARRY}.backend.files.copy-files.target=$(bashio::config '12_copy_db_target')")
+    bashio::log.info "Copy-file is activated FROM $(bashio::config '11_copy_db_source') TO $(bashio::config '12_copy_db_target')"
 fi
 
 
@@ -147,12 +147,12 @@ fi
 
 # --- SET UP BASE URL ---
 bashio::log.debug "Setting base URL for Sharry..."
-if bashio::config.true 'use_ssl'; then
+if bashio::config.true '14_use_ssl'; then
     base_url='https://'
 else
     base_url='http://'
 fi
-base_url+="$(bashio::config 'domain')"
+base_url+="$(bashio::config '13_domain')"
 if bashio::var.has_value "$(bashio::addon.port 9090)"; then
     base_url+=":$(bashio::addon.port 9090)"
 fi
@@ -164,22 +164,22 @@ conf_props+=("-D${SHARRY}.base-url=${base_url}")
 
 # --- Add other config options to properties array ---
 bashio::log.debug "Adding in secret, language, theme and share config options..."
-conf_props+=("-D${SHARRY}.backend.auth.server-secret=$(bashio::config 'server_secret')")
+conf_props+=("-D${SHARRY}.backend.auth.server-secret=$(bashio::config '18_server_secret')")
 
-if bashio::config.exists 'theme'; then
-    conf_props+=("-D${SHARRY}.webapp.initial-theme=$(bashio::config 'theme')")
+if bashio::config.exists '20_theme'; then
+    conf_props+=("-D${SHARRY}.webapp.initial-theme=$(bashio::config '20_theme')")
 fi
 
-if ! bashio::config.is_empty 'default_language'; then
-    conf_props+=("-D${SHARRY}.webapp.default-language=$(bashio::config 'default_language')")
+if ! bashio::config.is_empty '15_default_language'; then
+    conf_props+=("-D${SHARRY}.webapp.default-language=$(bashio::config '15_default_language')")
 fi
 
-if bashio::config.exists 'share_max_size_gb'; then
-    conf_props+=("-D${SHARRY}.backend.share.max-size=$(bashio::config 'share_max_size_gb')g")
+if bashio::config.exists '16_share_max_size_gb'; then
+    conf_props+=("-D${SHARRY}.backend.share.max-size=$(bashio::config '16_share_max_size_gb')g")
 fi
 
-if bashio::config.exists 'share_max_valid_days'; then
-    conf_props+=("-D${SHARRY}.backend.share.max-validity=$(bashio::config 'share_max_valid_days')d")
+if bashio::config.exists '17_share_max_valid_days'; then
+    conf_props+=("-D${SHARRY}.backend.share.max-validity=$(bashio::config '17_share_max_valid_days')d")
 fi
 
 
@@ -187,7 +187,7 @@ fi
 
 # --- SET LOG LEVEL ---
 # Can't be set with arguments or env variables, search & replace config file
-case "$(bashio::config 'log_level')" in \
+case "$(bashio::config '19_log_level')" in \
     trace)      log_level='Trace' ;; \
     debug)      log_level='Debug' ;; \
     notice)     ;& \
