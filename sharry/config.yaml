@@ -37,17 +37,17 @@ options: {
   "logins": {
     "password": null,
     "username": "homeassistant"
-    },
+  },
   "rights": {
     "database": "sharry",
     "username": "homeassistant"
-    }
   }
+}
 schema: {
   "conf_overrides": {
     "property": "match(^sharry[.]restserver[.][-.a-z0-9]+)",
     "value": "str"
-    }
+  },
   "defaultStore": "list(database|filesystem)",
   "local_db": "str?",
   "remote_db_type": "list(mariadb|postgres)?",
@@ -72,7 +72,7 @@ schema: {
   "logins": {
     "username": "str",
     "password": "password"
-    },
+  },
   "rights": {
     "database": "str",
     "privileges":
@@ -80,5 +80,5 @@ schema: {
       CREATE VIEW|DELETE|DELETE HISTORY|DROP|EVENT|GRANT OPTION|INDEX|\
       INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?",
     "username": "str"
-    }
   }
+}
