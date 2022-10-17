@@ -33,19 +33,21 @@ options: {
   "server_secret": null,
   "theme": "light",
   "log_level": "info",
-  "databases":
-    "sharry"
-  "logins":
+  "databases": "sharry",
+  "logins": {
     "password": null,
     "username": homeassistant"
-  "rights":
+    }
+  "rights": {
     "database": "sharry",
     "username": "homeassistant"
     }
+  }
 schema: {
-  "conf_overrides":
+  "conf_overrides": {
     "property": "match(^sharry[.]restserver[.][-.a-z0-9]+)",
     "value": "str"
+    }
   "defaultStore": "list(database|filesystem)",
   "local_db": "str?",
   "remote_db_type": "list(mariadb|postgres)?",
@@ -66,16 +68,17 @@ schema: {
   "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
   "theme": "list(light|dark)?",
   "reset_database": "bool?",
-  "databases":
-    "str"
-  "logins":
+  "databases": "str",
+  "logins": {
     "username": "str",
     "password": "password"
-  "rights":
+    }
+  "rights": {
     "database": "str",
     "privileges":
       "list(ALTER|CREATE|CREATE ROUTINE|CREATE TEMPORARY TABLES|\
       CREATE VIEW|DELETE|DELETE HISTORY|DROP|EVENT|GRANT OPTION|INDEX|\
       INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?",
     "username": "str"
+    }
   }
