@@ -36,7 +36,7 @@ options: {
   "databases": "sharry",
   "logins": {
     "password": null,
-    "username": homeassistant"
+    "username": "homeassistant"
     }
   "rights": {
     "database": "sharry",
