@@ -23,38 +23,57 @@ ports_description:
   3306/tcp: Mariadb port
 backup_post: s6-svc -wd -d /run/s6/legacy-services/mariadb-lock/
 backup_pre: s6-svc -wU -u /run/s6/legacy-services/mariadb-lock/
+options:
+  conf_overrides: []
+  domain: homeassistant.local
+  use_ssl: false
+  default_language: us
+  share_max_size_gb: 1.5
+  share_max_valid_days: 365
+  server_secret: null
+  theme: light
+  log_level: info
+  databases:
+    - sharry
+  logins:
+    - password: null
+      username: homeassistant
+  rights:
+    - database: sharry
+      username: homeassistant
 schema:
-  {
-    conf_overrides:
-      { property: "match(^sharry[.]restserver[.][-.a-z0-9]+)", value: str },
-    defaultStore: list(database|filesystem),
-    local_db: str,
-    remote_db_type: list(mariadb|postgres),
-    remote_db_host: str,
-    remote_db_port: port,
-    remote_db_username: str,
-    remote_db_password: password,
-    remote_db_database: str,
-    copy_db: bool,
-    copy_db_source: list(database|filesystem),
-    copy_db_target: list(database|filesystem),
-    domain: "match([^\\/:]+)",
-    use_ssl: bool,
-    default_language: "match([A-Za-z]{2})?",
-    share_max_size_gb: "float(0.01,)?",
-    share_max_valid_days: "int(1,)?",
-    server_secret: password,
-    log_level: list(trace|debug|info|notice|warning|error|fatal),
-    theme: list(light|dark),
-    databases: { str },
-    logins: { username: str, password: password },
-    rights:
-      {
-        database: str,
-        privileges: "list(ALTER|CREATE|CREATE ROUTINE|CREATE TEMPORARY TABLES|\
+  conf_overrides:
+    - property: match(^sharry[.]restserver[.][-.a-z0-9]+)
+      value: str
+  DefaultStore: list(database|filesystem)
+  local_db: str?
+  remote_db_type: list(mariadb|postgres)?
+  remote_db_host: str?
+  remote_db_port: port?
+  remote_db_username: str?
+  remote_db_password: password?
+  remote_db_database: str?
+  copy_db: bool?
+  copy_db_source: list(database|filesystem)?
+  copy_db_target: list(database|filesystem)?
+  domain: match([^\/:]+)
+  use_ssl: bool?
+  default_language: match([A-Za-z]{2})?
+  share_max_size_gb: float(0.01,)?
+  share_max_valid_days: int(1,)?
+  server_secret: password
+  log_level: list(trace|debug|info|notice|warning|error|fatal)?
+  theme: list(light|dark)?
+  reset_database: bool?
+  databases:
+    - str
+  logins:
+    - username: str
+      password: password
+  rights:
+    - database: str
+      privileges:
+        - "list(ALTER|CREATE|CREATE ROUTINE|CREATE TEMPORARY TABLES|\
           CREATE VIEW|DELETE|DELETE HISTORY|DROP|EVENT|GRANT OPTION|INDEX|\
-          INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?",
-        username: str,
-      },
-    reset_database: bool,
-  }
+          INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?"
+      username: str
