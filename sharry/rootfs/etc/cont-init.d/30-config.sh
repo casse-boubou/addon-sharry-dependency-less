@@ -11,8 +11,8 @@ declare property
 
 
 # --- ADDITIONAL VALIDATION ---
-for var in $(bashio::config '1_conf_overrides|keys'); do
-    property=$(bashio::config "1_conf_overrides[${var}].property")
+for var in $(bashio::config 'conf_overrides|keys'); do
+    property=$(bashio::config "conf_overrides[${var}].property")
     if [[ ${property} =~ ^sharry[.]restserver[.]backend[.]auth[.]command ]]; then
         bashio::log.fatal
         bashio::log.fatal "Your config attempts to override settings in the command"
@@ -53,7 +53,7 @@ else
     bashio::log.notice "set DefaultStore to database in Add-on config"
 fi
 if bashio::config.equals 'defaultStore' 'filesystem'; then
-    if bashio::config.is_empty '3_local_db'; then
+    if bashio::config.is_empty 'local_db'; then
         bashio::log.fatal
         bashio::log.fatal 'Sharry is using local db but directory is not defined'
         bashio::log.fatal
@@ -72,16 +72,16 @@ fi
 
 # --- SET UP DATABASE ---
 # Use user-provided remote db
-if ! bashio::config.is_empty '5_remote_db_host'; then
+if ! bashio::config.is_empty 'remote_db_host'; then
     bashio::log.debug 'Setting up remote database.'
-    bashio::config.require '4_remote_db_type' "'5_remote_db_host' is specified"
-    bashio::config.require '9_remote_db_database' "'5_remote_db_host' is specified"
-    bashio::config.require '7_remote_db_username' "'5_remote_db_host' is specified"
-    bashio::config.require '8_remote_db_password' "'5_remote_db_host' is specified"
-    bashio::config.require '6_remote_db_port' "'5_remote_db_host' is specified"
+    bashio::config.require 'remote_db_type' "'remote_db_host' is specified"
+    bashio::config.require 'remote_db_database' "'remote_db_host' is specified"
+    bashio::config.require 'remote_db_username' "'remote_db_host' is specified"
+    bashio::config.require 'remote_db_password' "'remote_db_host' is specified"
+    bashio::config.require 'remote_db_port' "'remote_db_host' is specified"
 
-    host=$(bashio::config '5_remote_db_host')
-    port=$(bashio::config '6_remote_db_port')
+    host=$(bashio::config 'remote_db_host')
+    port=$(bashio::config 'remote_db_port')
     bashio::log.info "Using remote database at ${host}:${port}"
 
     # Wait until db is available.
@@ -110,35 +110,35 @@ fi
 
 
 # --- SET UP COPY-FILE ---
-if bashio::config.true '10_copy_db'; then
-    if  bashio::config.is_empty '11_copy_db_source'; then
+if bashio::config.true 'copy_db'; then
+    if  bashio::config.is_empty 'copy_db_source'; then
         bashio::log.fatal
         bashio::log.fatal 'Copy-File is enabled but no source is defined.'
         bashio::log.fatal
         bashio::exit.nok
     elif
-        bashio::config.is_empty '12_copy_db_target'; then
+        bashio::config.is_empty 'copy_db_target'; then
         bashio::log.fatal
         bashio::log.fatal 'Copy-File is enabled but no target is defined.'
         bashio::log.fatal
         bashio::exit.nok
     elif
-        bashio::config.equals '11_copy_db_source' "$(bashio::config '12_copy_db_target')"; then
+        bashio::config.equals 'copy_db_source' "$(bashio::config 'copy_db_target')"; then
         bashio::log.fatal
         bashio::log.fatal 'Copy-File is enabled but source and target are same.'
         bashio::log.fatal
         bashio::exit.nok
     elif
-        bashio::config.equals '11_copy_db_source' 'filesystem'; then
-        if bashio::config.is_empty '3_local_db'; then
+        bashio::config.equals 'copy_db_source' 'filesystem'; then
+        if bashio::config.is_empty 'local_db'; then
             bashio::log.fatal
             bashio::log.fatal 'Sharry is copy from local db but directory is not defined'
             bashio::log.fatal
             bashio::exit.nok
         fi
     elif
-        bashio::config.equals '12_copy_db_target' 'filesystem'; then
-        if bashio::config.is_empty '3_local_db'; then
+        bashio::config.equals 'copy_db_target' 'filesystem'; then
+        if bashio::config.is_empty 'local_db'; then
             bashio::log.fatal
             bashio::log.fatal 'Sharry is copy to local db but directory is not defined'
             bashio::log.fatal
