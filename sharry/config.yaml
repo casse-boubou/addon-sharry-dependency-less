@@ -42,9 +42,10 @@ options:
     - database: sharry
       username: homeassistant
 schema: {
-  conf_overrides:
-    - property: match(^sharry[.]restserver[.][-.a-z0-9]+)
-      value: str,
+  conf_overrides: {
+    property: match(^sharry[.]restserver[.][-.a-z0-9]+),
+    value: str,
+  },
   DefaultStore: list(database|filesystem),
   local_db: str?,
   remote_db_type: list(mariadb|postgres)?,
@@ -64,16 +65,20 @@ schema: {
   server_secret: password,
   log_level: list(trace|debug|info|notice|warning|error|fatal)?,
   theme: list(light|dark)?,
-  databases:
-    - str,
-  logins:
-    - username: str
-      password: password,
-  rights:
-    - database: str
-      privileges:
-        - "list(ALTER|CREATE|CREATE ROUTINE|CREATE TEMPORARY TABLES|\
-          CREATE VIEW|DELETE|DELETE HISTORY|DROP|EVENT|GRANT OPTION|INDEX|\
-          INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?"
-      username: str,
-  reset_database: bool?}
+  databases: {
+    str
+  },
+  logins: {
+    username: str,
+    password: password
+  },
+  rights: {
+    database: str,
+    privileges:
+      "list(ALTER|CREATE|CREATE ROUTINE|CREATE TEMPORARY TABLES|\
+      CREATE VIEW|DELETE|DELETE HISTORY|DROP|EVENT|GRANT OPTION|INDEX|\
+      INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?",
+    username: str
+  },
+  reset_database: bool?
+}
