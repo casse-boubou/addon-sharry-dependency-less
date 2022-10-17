@@ -23,27 +23,6 @@ ports_description:
   3306/tcp: Mariadb port
 backup_post: s6-svc -wd -d /run/s6/legacy-services/mariadb-lock/
 backup_pre: s6-svc -wU -u /run/s6/legacy-services/mariadb-lock/
-options:
-  conf_overrides: []
-  domain: homeassistant.local
-  use_ssl: false
-  default_language: us
-  share_max_size_gb: 1.5
-  share_max_valid_days: 365
-  server_secret: null
-  theme: light
-  log_level: info
-  databases: {
-    sharry
-  }
-  logins: {
-    password: null,
-    username: homeassistant
-  }
-  rights: {
-    database: sharry,
-    username: homeassistant
-  }
 schema: {
   conf_overrides: {
     property: "match(^sharry[.]restserver[.][-.a-z0-9]+)",
