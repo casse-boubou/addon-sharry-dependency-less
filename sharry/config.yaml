@@ -56,7 +56,7 @@ schema:
     "copy_db": "bool?",
     "copy_db_source": "list(database|filesystem)?",
     "copy_db_target": "list(database|filesystem)?",
-    "domain": "match('[^\/:]+')",
+    "domain": "match([^\\/:]+)",
     "use_ssl": "bool?",
     "default_language": "match([A-Za-z]{2})?",
     "share_max_size_gb": "float(0.01,)?",
