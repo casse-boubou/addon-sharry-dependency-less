@@ -16,13 +16,13 @@ auth_api: true
 webui: http://[HOST]:[PORT:9090]
 watchdog: http://[HOST]:9090/api/v2/open/info/version
 ports:
-  9090/tcp: 9090
+  9090/tcp: 9090,
   3306/tcp: null
 ports_description:
-  9090/tcp: HTTP listen port
-  3306/tcp: Mariadb port
-backup_post: s6-svc -wd -d /run/s6/legacy-services/mariadb-lock/
-backup_pre: s6-svc -wU -u /run/s6/legacy-services/mariadb-lock/
+  9090/tcp: HTTP listen port,
+  3306/tcp: Mariadb port,
+backup_post: s6-svc -wd -d /run/s6/legacy-services/mariadb-lock/,
+backup_pre: s6-svc -wU -u /run/s6/legacy-services/mariadb-lock/,
 options: {
   "conf_overrides": "[]",
   "domain": "homeassistant.local",
@@ -37,7 +37,7 @@ options: {
   "logins": {
     "password": null,
     "username": "homeassistant"
-    }
+    },
   "rights": {
     "database": "sharry",
     "username": "homeassistant"
@@ -72,7 +72,7 @@ schema: {
   "logins": {
     "username": "str",
     "password": "password"
-    }
+    },
   "rights": {
     "database": "str",
     "privileges":
