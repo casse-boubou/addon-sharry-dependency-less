@@ -41,7 +41,6 @@ options:
   rights:
     - database: sharry
       username: homeassistant
-
 schema:
   conf_overrides:
     - property: match(^sharry[.]restserver[.][-.a-z0-9]+)
