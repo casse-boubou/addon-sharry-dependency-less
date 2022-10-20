@@ -23,14 +23,14 @@ RUN set -eux; \
     apk del .build-deps; \
     \
     apk add --no-cache \
-        mariadb-client=10.6.9-r0 \
+        mariadb-client=10.6.10-r0 \
         netcat-openbsd=1.130-r3 \
         openjdk11-jre=11.0.16.1_p1-r0
 
 # Add Maria db
 RUN apk add --no-cache \
-        mariadb=10.6.9-r0 \
-        mariadb-server-utils=10.6.9-r0 \
+        mariadb=10.6.10-r0 \
+        mariadb-server-utils=10.6.10-r0 \
         pwgen=2.08-r1
 
 ENV \
