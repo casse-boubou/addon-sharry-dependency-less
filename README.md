@@ -51,7 +51,7 @@ la [page des contributeurs][contributors].
 
 MIT License
 
-Copyright (c) 2021-2022 [Mike Degatano][mike-degatano]
+Copyright (c) 2021-2023 [Mike Degatano][mike-degatano]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

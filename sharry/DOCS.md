@@ -288,7 +288,7 @@ la [page des contributeurs][contributors].
 
 MIT License
 
-Copyright (c) 2022 [Frosch][frosch]
+Copyright (c) 2022-2023 [Frosch][frosch]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -309,7 +309,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 > **_Parts of the project are copied and inspired by a project originally Copyright
-> (c) 2021-2022 [Mike Degatano][mdegat01], distributed under [MIT License.][sharrylicense]:_**
+> (c) 2021-2023 [Mike Degatano][mdegat01], distributed under [MIT License.][sharrylicense]:_**
 >
 > > Permission is hereby granted, free of charge, to any person obtaining a copy
 > > of this software and associated documentation files (the "Software"), to deal
