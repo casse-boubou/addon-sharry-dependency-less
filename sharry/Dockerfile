@@ -5,7 +5,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/base
 FROM ${BUILD_FROM}
 
 # https://github.com/eikek/sharry/releases
-ARG SHARRY_VERSION=1.11.0
+ARG SHARRY_VERSION=1.12.0
 
 # Add Sharry and java
 RUN set -eux; \
