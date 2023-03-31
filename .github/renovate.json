@@ -30,9 +30,7 @@
     },
     {
       "fileMatch": ["/Dockerfile$"],
-      "matchStrings": [
-        "ARG SHARRY_VERSION=(?<currentValue>.+?)\\s+"
-      ],
+      "matchStrings": ["ARG SHARRY_VERSION=(?<currentValue>.+?)\\s+"],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "eikek/sharry",
       "versioningTemplate": "loose"
