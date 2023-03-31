@@ -27,18 +27,35 @@
       "versioningTemplate": "loose",
       "datasourceTemplate": "repology",
       "depNameTemplate": "alpine_3_17/{{package}}"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": [
+        "ARG SHARRY_VERSION=(?<currentValue>.+?)\\s+"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "eikek/sharry",
+      "versioningTemplate": "loose"
     }
   ],
   "packageRules": [
-    {
+    {      
       "matchDatasources": ["docker"],
       "commitMessagePrefix": "⬆️",
       "commitMessageTopic": "Addon Base Image"
     },
-    {
+    {      
       "matchDatasources": ["repology"],
       "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "{{packageName}}",
       "groupName": "internal packages"
+    },
+    {
+      "matchDatasources": ["github-tags"],
+      "matchDepNames": ["eikek/sharry"],
+      "commitMessagePrefix": "✨",
+      "commitMessageTopic": "Sharry"
     }
   ]
 }
+
