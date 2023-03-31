@@ -30,16 +30,15 @@
     }
   ],
   "packageRules": [
-    {      
-      "matchDatasources": ["docker"],     
+    {
+      "matchDatasources": ["docker"],
       "commitMessagePrefix": "⬆️",
       "commitMessageTopic": "Addon Base Image"
     },
-    {      
-      "matchDatasources": ["repology"],     
+    {
+      "matchDatasources": ["repology"],
       "commitMessagePrefix": "⬆️",
       "groupName": "internal packages"
     }
   ]
 }
-
