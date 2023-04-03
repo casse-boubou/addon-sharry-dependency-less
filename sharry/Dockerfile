@@ -8,7 +8,7 @@ FROM ${BUILD_FROM}
 ARG SHARRY_VERSION=v1.12.0
 
 # Add Sharry and java
-RUN set -eux; \
+RUN set -eux \
     apk update; \
     \
     apk add --no-cache --virtual .build-deps \
