@@ -12,7 +12,7 @@ RUN set -eux \
     apk update; \
     \
     apk add --no-cache --virtual .build-deps \
-        unzip=6.0-r13 \
+        unzip=6.0-r14 \
         ; \
     mkdir -p /opt; \
     curl -s -J -L -o /tmp/sharry.zip \
@@ -23,15 +23,15 @@ RUN set -eux \
     apk del .build-deps; \
     \
     apk add --no-cache \
-        mariadb-client=10.6.14-r0 \
-        netcat-openbsd=1.130-r4 \
-        openjdk11-jre=11.0.19_p7-r0
+        mariadb-client=10.11.4-r0 \
+        netcat-openbsd=1.219-r1 \
+        openjdk11-jre=11.0.19_p7-r1
 
 # Add Maria db
 RUN apk add --no-cache \
-        mariadb=10.6.14-r0 \
-        mariadb-server-utils=10.6.14-r0 \
-        pwgen=2.08-r2
+        mariadb=10.11.4-r0 \
+        mariadb-server-utils=10.11.4-r0 \
+        pwgen=2.08-r3
 
 ENV \
     LD_PRELOAD="/usr/local/lib/libjemalloc.so.2" \
