@@ -23,12 +23,12 @@ declare -a conf_props=()
 
 # --- Wait for Mariadb is running ---
 # Basicaly, it save teh log of the addon in logfile.log and whait until
-# see a log info of Mariadb i.e:"Successfully send service information to Home Assistant"
+# see a log info of Mariadb i.e:"Sending service information to Home Assistant"
 touch /logfile.log
 method=GET
 resource="/addons/self/logs"
 auth_header="Authorization: Bearer ${__BASHIO_SUPERVISOR_TOKEN}"
-while ! grep 'Successfully send service information to Home Assistant' /logfile.log; do
+while ! grep 'Sending service information to Home Assistant' /logfile.log; do
     response=$(curl --silent --show-error \
         --write-out '\n%{http_code}' --request "${method}" \
         -H "${auth_header}" \
