@@ -1,0 +1,25 @@
+server {
+    listen 9090 default_server ssl;
+    proxy_buffering off;
+    client_max_body_size 105M;
+
+    include /etc/nginx/includes/server_params.conf;
+    include /etc/nginx/includes/ssl_params.conf;
+    include /etc/nginx/includes/proxy_params.conf;
+
+    ssl_certificate /ssl/%%certfile%%;
+    ssl_certificate_key /ssl/%%keyfile%%;
+
+    location / {
+        proxy_pass http://backend;
+    }
+
+    location /notifications/hub {
+        proxy_pass http://wsbackend;
+    }
+
+    location /notifications/hub/negotiate {
+        proxy_pass http://backend;
+    }
+
+}

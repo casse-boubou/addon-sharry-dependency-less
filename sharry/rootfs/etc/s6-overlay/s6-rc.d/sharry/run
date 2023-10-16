@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
 # Home Assistant Add-on: Sharry
@@ -148,7 +148,7 @@ fi
 
 # --- SET UP BASE URL ---
 bashio::log.debug "Setting base URL for Sharry..."
-if bashio::config.true 'use_ssl'; then
+if bashio::config.true 'ssl'; then
     base_url='https://'
 else
     base_url='http://'
