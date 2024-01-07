@@ -51,7 +51,7 @@ la [page des contributeurs][contributors].
 
 MIT License
 
-Copyright (c) 2021-2023 [Mike Degatano][mike-degatano]
+Copyright (c) 2022-2024 [Frosh][Frosh]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -86,3 +86,4 @@ SOFTWARE.
 [discord-ha]: https://discord.gg/c5DvZ4e
 [forum]: https://community.home-assistant.io
 [hacf]: https://forum.hacf.fr/
+[Frosh]: https://github.com/erdnaxela02
