@@ -114,6 +114,8 @@ fi
 if bashio::config.equals 'defaultStore' 'database'; then
     bashio::log.info "Configuring Maria db storage..."
     conf_props+=("-D${SHARRY}.backend.files.stores.database.enabled=true")
+else
+    conf_props+=("-D${SHARRY}.backend.files.stores.database.enabled=false")
 fi
 # Local_DB
 if bashio::config.equals 'defaultStore' 'filesystem'; then
