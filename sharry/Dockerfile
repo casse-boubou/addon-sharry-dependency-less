@@ -37,7 +37,7 @@ RUN apk add --no-cache \
 # hadolint ignore=DL3009
 RUN \
     apk add --no-cache \
-        nginx=1.24.0-r14 \
+        nginx=1.24.0-r15 \
     && rm -fr \
         /etc/nginx \
         /tmp/* \
