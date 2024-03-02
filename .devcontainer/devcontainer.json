@@ -7,8 +7,8 @@
   "runArgs": ["-e", "GIT_EDITOR=code --wait", "--privileged"],
   "extensions": ["timonwong.shellcheck", "esbenp.prettier-vscode"],
   "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.shell.linux": "/bin/bash"
   },
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/addons,type=bind,consistency=delegated",
-  "workspaceFolder": "/workspaces/addons",
+  "workspaceFolder": "/workspaces/addons"
 }
