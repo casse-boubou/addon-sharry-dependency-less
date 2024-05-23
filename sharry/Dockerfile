@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:15.0.8
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:16.0.0
 
 # https://github.com/hassio-addons/addon-base/releases
 # hadolint ignore=DL3006
@@ -23,21 +23,21 @@ RUN set -eux \
     apk del .build-deps; \
     \
     apk add --no-cache \
-        mariadb-client=10.11.6-r0 \
+        mariadb-client=10.11.8-r0 \
         netcat-openbsd=1.226-r0 \
         openjdk17-jre=17.0.11_p9-r0
 
 # Add Maria db
 RUN apk add --no-cache \
-        mariadb=10.11.6-r0 \
-        mariadb-server-utils=10.11.6-r0 \
+        mariadb=10.11.8-r0 \
+        mariadb-server-utils=10.11.8-r0 \
         pwgen=2.08-r3
 
 # add Nginx
 # hadolint ignore=DL3009
 RUN \
     apk add --no-cache \
-        nginx=1.24.0-r16 \
+        nginx=1.26.0-r1 \
     && rm -fr \
         /etc/nginx \
         /tmp/* \
