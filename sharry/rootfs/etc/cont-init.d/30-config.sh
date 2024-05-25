@@ -37,23 +37,33 @@ for var in $(bashio::config 'conf_overrides|keys'); do
         bashio::exit.nok
 
     # Prevent break of Nginx reverse proxy
-    elif [[ ${property} =~ ^sharry[.]restserver[.]bind ]]; then
+    elif [[ ${property} =~ ^sharry[.]restserver[.]bind[.]address ]]; then
         bashio::log.fatal
         bashio::log.fatal "Your config attempts to override settings in the bind module."
-        bashio::log.fatal "This is not allowed as it could break the addon."
+        bashio::log.fatal "If you use NGINX this is not allowed as it could break the addon."
         bashio::log.fatal
         bashio::log.fatal "Remove any conf_overrides you have added with a property"
         bashio::log.fatal "matching this pattern and try again:"
-        bashio::log.fatal "'sharry.restserver.bind.*'"
+        bashio::log.fatal "'sharry.restserver.bind.address'"
         bashio::log.fatal
         bashio::exit.nok
+    elif [[ ${property} =~ ^sharry[.]restserver[.]bind[.]port ]]; then
+        bashio::log.fatal
+        bashio::log.fatal "Your config attempts to override settings in the bind module."
+        bashio::log.fatal "If you use NGINX this is not allowed as it could break the addon."
+        bashio::log.fatal "USE AT YOUR OWN RISK !!!!"
+        bashio::log.fatal
+        bashio::log.fatal "Please remove any conf_overrides you have added with a property"
+        bashio::log.fatal "matching this pattern and try again:"
+        bashio::log.fatal "'sharry.restserver.bind.port'"
+        bashio::log.fatal
 
     # Warning when changing chunk-size because of Nginx client_max_body_size parameter
     elif [[ ${property} =~ ^sharry[.]restserver[.]webapp[.]chunk-size ]]; then
         bashio::log.fatal
         bashio::log.fatal "WARNING"
         bashio::log.fatal "Your config attempts to override settings in the CHUNK-SIZE value."
-        bashio::log.fatal "Do NOT exceed the value of 100M."
+        bashio::log.fatal "If you use NGINX do NOT exceed the value of 100M."
         bashio::log.fatal "This is not allowed as it could break the addon."
         bashio::log.fatal
         bashio::log.fatal

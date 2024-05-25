@@ -150,13 +150,13 @@ fi
 
 # --- SET UP BASE URL ---
 bashio::log.debug "Setting base URL for Sharry..."
-if bashio::config.true 'ssl'; then
+if bashio::config.true 'use_ssl'; then
     base_url='https://'
 else
     base_url='http://'
 fi
 base_url+="$(bashio::config 'domain')"
-if bashio::var.has_value "$(bashio::addon.port 9090)"; then
+if ! bashio::config.true 'no_port_to_Base_URL'; then
     base_url+=":$(bashio::addon.port 9090)"
 fi
 bashio::log.info "Sharry will be available at ${base_url}"

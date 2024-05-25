@@ -33,18 +33,6 @@ RUN apk add --no-cache \
         mariadb-server-utils=10.11.8-r0 \
         pwgen=2.08-r3
 
-# add Nginx
-# hadolint ignore=DL3009
-RUN \
-    apk add --no-cache \
-        nginx=1.26.0-r1 \
-    && rm -fr \
-        /etc/nginx \
-        /tmp/* \
-    \
-    && mkdir -p /var/log/nginx \
-    && touch /var/log/nginx/error.log
-
 ENV \
     LD_PRELOAD="/usr/local/lib/libjemalloc.so.2" \
     S6_SERVICES_GRACETIME=18000
