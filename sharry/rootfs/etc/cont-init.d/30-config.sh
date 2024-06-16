@@ -34,6 +34,35 @@ for var in $(bashio::config 'conf_overrides|keys'); do
         bashio::log.fatal "matching this pattern and try again:"
         bashio::log.fatal "'sharry.restserver.backend.files.*'"
         bashio::log.fatal
+        bashio::log.fatal "And please use 'defaultStore' in module configuration instead"
+        bashio::log.fatal
+        bashio::exit.nok
+
+    elif [[ ${property} =~ ^sharry[.]restserver[.]base-url ]]; then
+        bashio::log.fatal
+        bashio::log.fatal "Your config attempts to override log level settings."
+        bashio::log.fatal "This is not allowed as it could break the addon."
+        bashio::log.fatal
+        bashio::log.fatal "Remove any conf_overrides you have added with a property"
+        bashio::log.fatal "matching this pattern:"
+        bashio::log.fatal "'sharry.restserver.base-url'"
+        bashio::log.fatal
+        bashio::log.fatal "And please use 'domain', 'use_ssl' and 'no_port_to_Base_URL'"
+        bashio::log.fatal "in module configuration instead"
+        bashio::log.fatal
+        bashio::exit.nok
+
+    elif [[ ${property} =~ ^sharry[.]restserver[.]logging[.]minimum-level ]]; then
+        bashio::log.fatal
+        bashio::log.fatal "Your config attempts to override log level settings."
+        bashio::log.fatal "This is not allowed as it could break the addon."
+        bashio::log.fatal
+        bashio::log.fatal "Remove any conf_overrides you have added with a property"
+        bashio::log.fatal "matching this pattern:"
+        bashio::log.fatal "'sharry.restserver.logging.minimum-level'"
+        bashio::log.fatal
+        bashio::log.fatal "And please use 'log_level' parameter in module configuration"
+        bashio::log.fatal
         bashio::exit.nok
 
     # Prevent break of Nginx reverse proxy
