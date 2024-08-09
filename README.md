@@ -73,12 +73,12 @@ SOFTWARE.
 
 [add-addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=c751e21a_sharry-dependency-less
 [add-addon-shield]: https://my.home-assistant.io/badges/supervisor_addon.svg
-[add-repo]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A//github.com/erdnaxela02/hassio-addons
+[add-repo]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A//github.com/casse-boubou/hassio-addons
 [add-repo-shield]: https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg
-[addon-sharry]: https://github.com/erdnaxela02/addon-sharry
-[releases]: https://github.com/erdnaxela02/addon-sharry-dependency-less/releases
-[releases-shield]: https://img.shields.io/github/v/release/erdnaxela02/addon-sharry-dependency-less
-[license-shield]: https://img.shields.io/github/license/erdnaxela02/addon-sharry-dependency-less
+[addon-sharry]: https://github.com/casse-boubou/addon-sharry
+[releases]: https://github.com/casse-boubou/addon-sharry-dependency-less/releases
+[releases-shield]: https://img.shields.io/github/v/release/casse-boubou/addon-sharry-dependency-less
+[license-shield]: https://img.shields.io/github/license/casse-boubou/addon-sharry-dependency-less
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [mike-degatano]: https://github.com/mdegat01/addon-sharry
 [contributors]: https://github.com/mdegat01/addon-sharry/graphs/contributors
@@ -86,4 +86,4 @@ SOFTWARE.
 [discord-ha]: https://discord.gg/c5DvZ4e
 [forum]: https://community.home-assistant.io
 [hacf]: https://forum.hacf.fr/
-[Frosh]: https://github.com/erdnaxela02
+[Frosh]: https://github.com/casse-boubou
