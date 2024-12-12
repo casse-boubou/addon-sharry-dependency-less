@@ -12,7 +12,7 @@ RUN set -eux \
     apk update; \
     \
     apk add --no-cache --virtual .build-deps \
-        unzip=6.0-r14 \
+        unzip=6.0-r15 \
         ; \
     mkdir -p /opt; \
     curl -s -J -L -o /tmp/sharry.zip \
@@ -24,7 +24,7 @@ RUN set -eux \
     \
     apk add --no-cache \
         mariadb-client=10.11.10-r0 \
-        netcat-openbsd=1.226-r0 \
+        netcat-openbsd=1.226.1.1-r0 \
         openjdk17-jre=17.0.13_p11-r0
 
 # Add Maria db
