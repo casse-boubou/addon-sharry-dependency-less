@@ -25,7 +25,7 @@ RUN set -eux \
     apk add --no-cache \
         mariadb-client=11.4.4-r1 \
         netcat-openbsd=1.226.1.1-r0 \
-        openjdk17-jre=17.0.13_p11-r0
+        openjdk17-jre=17.0.14_p7-r0
 
 # Add Maria db
 RUN apk add --no-cache \
