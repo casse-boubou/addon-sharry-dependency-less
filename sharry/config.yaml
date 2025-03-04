@@ -77,4 +77,7 @@ schema:
           CREATE VIEW|DELETE|DELETE HISTORY|DROP|EVENT|GRANT OPTION|INDEX|\
           INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?"
       username: str
+  mariadb_server_args:
+    - str?
   reset_database: bool?
+timeout: 300
