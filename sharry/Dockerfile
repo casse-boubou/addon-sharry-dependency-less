@@ -34,8 +34,7 @@ RUN apk add --no-cache \
         pwgen=2.08-r3
 
 ENV \
-    LD_PRELOAD="/usr/local/lib/libjemalloc.so.2" \
-    S6_SERVICES_GRACETIME=18000
+    LD_PRELOAD="/usr/local/lib/libjemalloc.so.2"
     
 COPY --chmod=445 rootfs /
 WORKDIR /
