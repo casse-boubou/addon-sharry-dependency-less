@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:17.2.4
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.1.1
 
 # https://github.com/hassio-addons/addon-base/releases
 # hadolint ignore=DL3006
@@ -24,7 +24,7 @@ RUN set -eux \
     \
     apk add --no-cache \
         mariadb-client=11.4.8-r0 \
-        netcat-openbsd=1.226.1.1-r0 \
+        netcat-openbsd=1.229.1-r0 \
         openjdk17-jre=17.0.16_p8-r0
 
 # Add Maria db
