@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Add-on: Sharry
+# Home Assistant App: Sharry
 # Runs Sharry
 # ==============================================================================
 
@@ -22,7 +22,7 @@ declare -a conf_props=()
 
 
 # --- Wait for Mariadb is running ---
-# Basicaly, it save teh log of the addon in logfile.log and whait until
+# Basicaly, it save teh log of the app in logfile.log and whait until
 # see a log info of Mariadb i.e:"Sending service information to Home Assistant"
 touch /logfile.log
 method=GET
@@ -77,7 +77,7 @@ if ! bashio::config.is_empty 'remote_db_host'; then
 else
     if ! bashio::services.available 'mysql'; then
         bashio::log.fatal
-        bashio::log.fatal 'MariaDB addon not available and no alternate database supplied'
+        bashio::log.fatal 'MariaDB app not available and no alternate database supplied'
         bashio::log.fatal 'Ensure MariaDB is available or provide an alternate database'
         bashio::log.fatal
         bashio::exit.nok

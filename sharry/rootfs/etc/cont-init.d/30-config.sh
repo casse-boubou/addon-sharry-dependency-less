@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Add-on: Sharry
+# Home Assistant App: Sharry
 # This validates config, creates the database and sets up app files/folders
 # ==============================================================================
 declare host
@@ -17,7 +17,7 @@ for var in $(bashio::config 'conf_overrides|keys'); do
         bashio::log.fatal
         bashio::log.fatal "Your config attempts to override settings in the command"
         bashio::log.fatal "auth module. This is not allowed as it would break the ability"
-        bashio::log.fatal "of this addon to authenticate users with Home Assistant."
+        bashio::log.fatal "of this app to authenticate users with Home Assistant."
         bashio::log.fatal
         bashio::log.fatal "Remove any conf_overrides you have added with a property"
         bashio::log.fatal "matching this pattern and try again:"
@@ -28,7 +28,7 @@ for var in $(bashio::config 'conf_overrides|keys'); do
     elif [[ ${property} =~ ^sharry[.]restserver[.]backend[.]files ]]; then
         bashio::log.fatal
         bashio::log.fatal "Your config attempts to override settings in the files module."
-        bashio::log.fatal "This is not allowed as it could break the addon."
+        bashio::log.fatal "This is not allowed as it could break the app."
         bashio::log.fatal
         bashio::log.fatal "Remove any conf_overrides you have added with a property"
         bashio::log.fatal "matching this pattern and try again:"
@@ -41,7 +41,7 @@ for var in $(bashio::config 'conf_overrides|keys'); do
     elif [[ ${property} =~ ^sharry[.]restserver[.]base-url ]]; then
         bashio::log.fatal
         bashio::log.fatal "Your config attempts to override log level settings."
-        bashio::log.fatal "This is not allowed as it could break the addon."
+        bashio::log.fatal "This is not allowed as it could break the app."
         bashio::log.fatal
         bashio::log.fatal "Remove any conf_overrides you have added with a property"
         bashio::log.fatal "matching this pattern:"
@@ -55,7 +55,7 @@ for var in $(bashio::config 'conf_overrides|keys'); do
     elif [[ ${property} =~ ^sharry[.]restserver[.]logging[.]minimum-level ]]; then
         bashio::log.fatal
         bashio::log.fatal "Your config attempts to override log level settings."
-        bashio::log.fatal "This is not allowed as it could break the addon."
+        bashio::log.fatal "This is not allowed as it could break the app."
         bashio::log.fatal
         bashio::log.fatal "Remove any conf_overrides you have added with a property"
         bashio::log.fatal "matching this pattern:"
@@ -69,7 +69,7 @@ for var in $(bashio::config 'conf_overrides|keys'); do
     elif [[ ${property} =~ ^sharry[.]restserver[.]bind[.]address ]]; then
         bashio::log.fatal
         bashio::log.fatal "Your config attempts to override settings in the bind module."
-        bashio::log.fatal "If you use NGINX this is not allowed as it could break the addon."
+        bashio::log.fatal "If you use NGINX this is not allowed as it could break the app."
         bashio::log.fatal
         bashio::log.fatal "Remove any conf_overrides you have added with a property"
         bashio::log.fatal "matching this pattern and try again:"
@@ -79,7 +79,7 @@ for var in $(bashio::config 'conf_overrides|keys'); do
     elif [[ ${property} =~ ^sharry[.]restserver[.]bind[.]port ]]; then
         bashio::log.fatal
         bashio::log.fatal "Your config attempts to override settings in the bind module."
-        bashio::log.fatal "If you use NGINX this is not allowed as it could break the addon."
+        bashio::log.fatal "If you use NGINX this is not allowed as it could break the app."
         bashio::log.fatal "USE AT YOUR OWN RISK !!!!"
         bashio::log.fatal
         bashio::log.fatal "Please remove any conf_overrides you have added with a property"
@@ -93,7 +93,7 @@ for var in $(bashio::config 'conf_overrides|keys'); do
         bashio::log.fatal "WARNING"
         bashio::log.fatal "Your config attempts to override settings in the CHUNK-SIZE value."
         bashio::log.fatal "If you use NGINX do NOT exceed the value of 100M."
-        bashio::log.fatal "This is not allowed as it could break the addon."
+        bashio::log.fatal "This is not allowed as it could break the app."
         bashio::log.fatal
         bashio::log.fatal
     fi
@@ -106,12 +106,12 @@ done
 # Be sure that at least one database is activated
 if bashio::config.equals 'defaultStore' 'database'; then
     bashio::log.info "Sharry is using the Maria database storage"
-    bashio::log.notice "Please ensure that addon is included in your backups"
-    bashio::log.notice "Uninstalling the Maria DB addon will also remove Sharry's data"
+    bashio::log.notice "Please ensure that app is included in your backups"
+    bashio::log.notice "Uninstalling the Maria DB app will also remove Sharry's data"
 else
     bashio::log.info "Maria database storage is not actived..."
     bashio::log.notice "If you want use Maria database for data storage please"
-    bashio::log.notice "set DefaultStore to database in Add-on config"
+    bashio::log.notice "set DefaultStore to database in App config"
 fi
 if bashio::config.equals 'defaultStore' 'filesystem'; then
     if bashio::config.is_empty 'local_db'; then
@@ -122,10 +122,10 @@ if bashio::config.equals 'defaultStore' 'filesystem'; then
     fi
     bashio::log.info "Sharry is using the Local database storage"
     bashio::log.notice "Please ensure that directory is included in your backups"
-    bashio::log.notice "Uninstalling the Maria DB addon will also remove Sharry's data"
+    bashio::log.notice "Uninstalling the Maria DB app will also remove Sharry's data"
 else bashio::log.info "Local database storage is not actived..."
     bashio::log.notice "If you want use local database storage please"
-    bashio::log.notice "set DefaultStore to filesystem in Add-on config"
+    bashio::log.notice "set DefaultStore to filesystem in App config"
 fi
 
 
