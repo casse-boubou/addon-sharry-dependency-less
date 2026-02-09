@@ -1,4 +1,4 @@
-# Home Assistant Add-on: Sharry dependency-less
+# Home Assistant App: Sharry dependency-less
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE)
@@ -8,16 +8,16 @@
 [Sharry][sharry] permet de partager des fichiers avec d'autres de manière
 simple.
 
-Il s'agit ici d'une version modifier [de cet add-on][addon-sharry] dans laquelle
-l'add-on Maria db est integrer.
+Il s'agit ici d'une version modifier [de cet app][app-sharry] dans laquelle
+l'app Maria db est integrer.
 
-[![Open your Home Assistant instance and show the add add-on repository dialog
+[![Open your Home Assistant instance and show the add app repository dialog
 with a specific repository URL pre-filled.][add-repo-shield]][add-repo]
-[![Open your Home Assistant instance and show the dashboard of a Supervisor add-on.][add-addon-shield]][add-addon]
+[![Open your Home Assistant instance and show the dashboard of a Supervisor app.][add-app-shield]][add-app]
 
 ## About
 
-Cet add-on permet un partage de fichiers rapidement et facilement.
+Cet app permet un partage de fichiers rapidement et facilement.
 Vous glisser et déposez des fichiers et obtenez un lien que vous pouvez partager
 avec n'importe qui.
 Vous pouvez également créer et partager des liens avec d'autres personnes
@@ -34,7 +34,7 @@ vidéos.
 
 Je ne suis pas dévellopeur, n'ai aucune formation de code, je suis simplement
 autodidact.
-Si vous avez une question concernant HA et ses add-ons vous pouvez consulter:
+Si vous avez une question concernant HA et ses apps vous pouvez consulter:
 
 - [Le Forum communautaire francophone][hacf] de HomeAssistant
 - [Le Forum communautaire anglophone][forum] de HomeAssistant.
@@ -51,7 +51,7 @@ la [page des contributeurs][contributors].
 
 MIT License
 
-Copyright (c) 2022-2025 [Frosh][Frosh]
+Copyright (c) 2022-2026 [Frosh][Frosh]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -71,11 +71,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[add-addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=c751e21a_sharry-dependency-less
-[add-addon-shield]: https://my.home-assistant.io/badges/supervisor_addon.svg
+[add-app]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=c751e21a_sharry-dependency-less
+[add-app-shield]: https://my.home-assistant.io/badges/supervisor_addon.svg
 [add-repo]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A//github.com/casse-boubou/hassio-addons
 [add-repo-shield]: https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg
-[addon-sharry]: https://github.com/casse-boubou/addon-sharry
+[app-sharry]: https://github.com/casse-boubou/addon-sharry
 [releases]: https://github.com/casse-boubou/addon-sharry-dependency-less/releases
 [releases-shield]: https://img.shields.io/github/v/release/casse-boubou/addon-sharry-dependency-less
 [license-shield]: https://img.shields.io/github/license/casse-boubou/addon-sharry-dependency-less

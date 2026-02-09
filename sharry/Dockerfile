@@ -25,7 +25,7 @@ RUN set -eux \
     apk add --no-cache \
         mariadb-client=11.4.8-r0 \
         netcat-openbsd=1.229.1-r0 \
-        openjdk17-jre=17.0.17_p10-r0
+        openjdk17-jre=17.0.18_p8-r0
 
 # Add Maria db
 RUN apk add --no-cache \
@@ -58,7 +58,7 @@ LABEL \
     maintainer="Frosh" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Frosh Home Assistant Add-ons" \
+    org.opencontainers.image.vendor="Frosh Home Assistant App" \
     org.opencontainers.image.authors="Frosh" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://github.com/casse-boubou/hassio-addons" \
