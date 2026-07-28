@@ -93,7 +93,7 @@ else
         echo "DROP DATABASE IF EXISTS \`${DATABASE}\`;" \
             | mysql -h "${host}" -P "${port}" -u "${username}" -p"${password}"
         # Remove `reset_database` option
-        bashio::addon.option 'reset_database'
+        bashio::app.option 'reset_database'
     fi
 fi
 conf_props+=( \
@@ -157,7 +157,7 @@ else
 fi
 base_url+="$(bashio::config 'domain')"
 if ! bashio::config.true 'no_port_to_Base_URL'; then
-    base_url+=":$(bashio::addon.port 9090)"
+    base_url+=":$(bashio::app.port 9090)"
 fi
 bashio::log.info "Sharry will be available at ${base_url}"
 conf_props+=("-D${SHARRY}.base-url=${base_url}")
