@@ -12,7 +12,7 @@ RUN set -eux \
     apk update; \
     \
     apk add --no-cache --virtual .build-deps \
-        unzip=6.0-r15 \
+        unzip=6.0-r16 \
         ; \
     mkdir -p /opt; \
     curl -s -J -L -o /tmp/sharry.zip \
