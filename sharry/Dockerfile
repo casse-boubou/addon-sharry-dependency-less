@@ -5,7 +5,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/base:21.0.0
 FROM ${BUILD_FROM}
 
 # https://github.com/eikek/sharry/releases
-ARG SHARRY_VERSION=v1.16.0
+ARG SHARRY_VERSION="v1.16.0"
 
 # Add Sharry and java
 RUN set -eux \
@@ -31,7 +31,9 @@ RUN set -eux \
 RUN apk add --no-cache \
         mariadb=11.8.8-r0 \
         mariadb-server-utils=11.8.8-r0 \
-        pwgen=2.08-r3
+        pwgen=2.08-r3 \
+        ; \
+    rm -rf /var/cache/apk/*
 
 ENV \
     LD_PRELOAD="/usr/local/lib/libjemalloc.so.2"
